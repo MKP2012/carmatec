@@ -1,0 +1,27 @@
+<%= form_with(model: contact_list, local: true) do |form| %>
+  <% if contact_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact_list.errors.count, "error") %> prohibited this contact_list from being saved:</h2>
+
+      <ul>
+      <% contact_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :contact_list_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_ids %>
+    <%= select_tag "contact_ids", options_from_collection_for_select(Contact.all, 'id', 'name'), :multiple => true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

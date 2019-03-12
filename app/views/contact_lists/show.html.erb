@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact_list.name %>
+</p>
+
+<p>
+  <ul>
+      <% @contact_list_contacts.each do |data| %>
+        <li><%= "#{data.name} #{data.email}" %></li>
+      <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_contact_list_path(@contact_list) %> |
+<%= link_to 'Back', contact_lists_path %>
